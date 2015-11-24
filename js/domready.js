@@ -80,11 +80,13 @@
 
       // prevent form submission if not valid
       this.contactForm.addEventListener('submit', function(event) {
-        if ( !this.checkValidity() ) { event.preventDefault(); }
-
-        // TESTING
-        console.log("form...", this);
-
+       if ( !this.checkValidity() ) { event.preventDefault(); }
+        // workaround for formspree bug
+        // shadow the form inputs with hidden inputs
+        var formElements = this.elements;
+        formElements["shadowname"].value = formElements["form-name"].value;
+        formElements["shadowemail"].value = formElements["form-email"].value;
+        formElements["shadowmessage"].value = formElements["form-message"].value;
       });
     },
 
