@@ -26,12 +26,11 @@
 
     @font-face {
         font-family: 'vincHand';
-        src: url('../fonts/vinchand-webfont.eot');
-        src: url('../fonts/vinchand-webfont.eot?#iefix') format('embedded-opentype'),
-             url('../fonts/vinchand-webfont.woff2') format('woff2'),
-             url('../fonts/vinchand-webfont.woff') format('woff'),
-             url('../fonts/vinchand-webfont.ttf') format('truetype'),
-             url('../fonts/vinchand-webfont.svg#vinchandregular') format('svg');
+        src: url('../fonts/vinchand.eot');
+        src: url('../fonts/vinchand.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/vinchand.woff2') format('woff2'),
+             url('../fonts/vinchand.woff') format('woff'),
+             url('../fonts/vinchand.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
