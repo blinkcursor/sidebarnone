@@ -1,0 +1,121 @@
+/* ==========================================================================
+   SET VERTICAL (EXPAND) & HORIZONTAL (CONTAIN) PADDING ON SECTIONS
+
+   Vertical content shrinks-to-fit so we *EXPAND* it
+   Horizontal content takes up the available width so we *CONTAIN* it
+   ========================================================================== */
+
+$inuit-section-padding:           $inuit-base-spacing-unit !default;
+$inuit-section-padding--tiny:     quarter($inuit-section-padding) !default;
+$inuit-section-padding--small:    halve($inuit-section-padding) !default;
+$inuit-section-padding--large:    double($inuit-section-padding) !default;
+$inuit-section-padding--huge:     quadruple($inuit-section-padding) !default;
+
+@if ($inuit-enable-section == true) {
+    /**
+     * 1. apply .expand class to create block clearing block elements
+     */
+    .expand,
+    %expand {
+        @extend %clearfix;
+        display: block; /* [1] */
+        padding-top: $inuit-section-padding;
+        padding-bottom: $inuit-section-padding;
+        position: relative;
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .contain {
+        padding-left: $inuit-section-padding;
+        padding-right: $inuit-section-padding;
+
+    }
+
+    /**
+     * Flush (i.e. no padding) section.
+     */
+    .expand--flush,
+    %expand--flush {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .contain--flush,
+    %contain--flush {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    /**
+     * Tiny section.
+     */
+    .expand--tiny,
+    %expand--tiny {
+        padding-top: $inuit-section-padding--tiny;
+        padding-bottom: $inuit-section-padding--tiny;
+    }
+    .contain--tiny,
+    %contain--tiny {
+        padding-left: $inuit-section-padding--tiny;
+        padding-right: $inuit-section-padding--tiny;
+    }
+
+
+    /**
+     * Small section.
+     */
+    .expand--small,
+    %expand--small {
+        padding-top: $inuit-section-padding--small;
+        padding-bottom: $inuit-section-padding--small;
+    }
+    .contain--small,
+    %contain--small {
+        padding-left: $inuit-section-padding--small;
+        padding-right: $inuit-section-padding--small;
+    }
+
+
+    /**
+     * Large section.
+     */
+    .expand--large,
+    %expand--large {
+        padding-top: $inuit-section-padding--large;
+        padding-bottom: $inuit-section-padding--large;
+    }
+    .contain--large,
+    %contain--large {
+        padding-left: $inuit-section-padding--large;
+        padding-right: $inuit-section-padding--large;
+    }
+
+
+    /**
+     * Huge section.
+     */
+    .expand--huge,
+    %expand--huge {
+        padding-top: $inuit-section-padding--huge;
+        padding-bottom: $inuit-section-padding--huge;
+    }
+   .contain--huge,
+    %contain--huge {
+        padding-left: $inuit-section-padding--huge;
+        padding-right: $inuit-section-padding--huge;
+    }
+
+
+    /**
+     * Corset (max-width centered)
+     */
+    .contain--corset,
+    %contain--corset {
+        max-width: $corset-maxwidth;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}

@@ -1,0 +1,65 @@
+/* ==========================================================================
+   SET HEADING SIZES and COMPLEMENTARY SIZE CLASSES
+   ========================================================================== */
+
+.tera, %tera {
+	@include inuit-font-size($size-tera);
+}
+
+.giga, %giga {
+	@include inuit-font-size($size-giga);
+}
+
+.mega, %mega {
+	@include inuit-font-size($size-mega);
+}
+
+.kilo, %kilo {
+	@include inuit-font-size($size-kilo);
+}
+
+
+h1, .alpha,
+	%alpha {
+    @include inuit-font-size($size-alpha);
+}
+
+h2, .beta,
+	%beta {
+    @include inuit-font-size($size-beta);
+}
+
+h3, .gamma,
+	%gamma {
+    @include inuit-font-size($size-gamma);
+}
+
+h4, .delta,
+	%delta {
+    @include inuit-font-size($size-delta);
+}
+
+h5, .epsilon,
+	%epsilon {
+    @include inuit-font-size($size-epsilon);
+}
+
+h6, .zeta,
+	%zeta {
+    @include inuit-font-size($size-zeta);
+}
+
+small, .milli, %milli {
+	@include inuit-font-size($size-milli);
+}
+.micro, %micro {
+	@include inuit-font-size($size-micro);
+}
+
+/* ==========================================================================
+   DEFINE THE .LEDE CLASS FOR LARGER LEADING PARAGRAPHS
+   ========================================================================== */
+.lede,
+%lede {
+    @include inuit-font-size($inuit-base-font-size * $inuit-lede-size);
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <path id="clip-back" d="M162.394,90.289L161.115,400.955C161.115,400.955 221.746,458.686 255.178,480.582C288.37,459.443 348.157,401.15 348.157,401.15L348.544,36.331C306.28,31.208 263.992,31.112 221.679,36.331L221.679,314.143C231.898,325.096 242.709,334.225 254.247,341.111C267.278,333.497 279.216,324.351 290.15,313.794L290.15,140.578" style="fill:none;stroke-width:40px;stroke:rgb(139,140,115);"/>
+    <path id="clip-front" d="M161.394,371.289L161.115,400.955C161.115,400.955 221.746,458.686 255.178,480.582C288.37,459.443 348.157,401.15 348.157,401.15L348.544,36.331C306.28,31.208 263.992,31.112 221.679,36.331L221.679,314.143C231.898,325.096 242.709,334.225 254.247,341.111C267.278,333.497 279.216,324.351 290.15,313.794L290.15,140.578" style="fill:none;stroke-width:40px;stroke:rgb(139,140,115);"/>
+</svg>

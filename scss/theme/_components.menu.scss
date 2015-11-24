@@ -1,0 +1,87 @@
+/*--------------------------------------------*\
+    #SIMPLE DROPDOWN MENU WITH MOBILE VERSION
+\*--------------------------------------------*/
+
+// TODO: Turn duration into a variable, currently fixed at 0.33s
+// TODO: Change normal drop-down so works via max-height not display
+
+// expands upon .nav object
+
+// any link inside a nav does not need text-decoration
+nav a {
+    text-decoration: none;
+}
+
+// any ul which occurs inside a nav is deemed to be like a .nav--block
+nav ul {
+    line-height:1;
+    cursor: pointer;
+    margin-bottom: 0; // remove base style
+    z-index: 999;
+    /**
+     * Remove whitespace caused by `inline-block`.
+     */
+    letter-spacing:-0.31em;
+    word-spacing:-0.43em;
+    white-space:nowrap;
+    > li{
+        position: relative; // to anchor absolutely positioned sub-menus
+        letter-spacing:normal;
+        word-spacing:normal;
+        z-index: inherit;
+        > a{
+            display: block;
+            padding:$inuit-base-font-size;
+        }
+    }
+}
+a.inactive {
+    cursor: default;
+}
+
+// position and size sub-menus
+.nav li ul {
+  position: absolute;
+  top: (2 + $inuit-base-font-size + ( $inuit-base-font-size * 2 ) );
+  left: 0;
+  margin-left: 0;
+  width: 240px; // arbitrary. derive?
+  display: none;
+  z-index: inherit;
+  @include media-query($menu-break) {
+    position: relative;
+    display: block;
+    top: 0;
+    padding-left: $inuit-base-spacing-unit;
+    width: 100%;
+  }
+}
+
+.nav li ul li {
+  display: block;
+}
+
+.nav li:hover ul {
+  display: block;
+}
+
+.nav li {
+    @include media-query($menu-break) {
+        display: block;
+    }
+}
+
+.site-nav__toggle {
+    display: none;
+    @include media-query($menu-break) {
+        display: initial;
+    }
+}
+
+@include media-query($menu-break) {
+  .site-nav {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.66s ease-in-out }
+}
+

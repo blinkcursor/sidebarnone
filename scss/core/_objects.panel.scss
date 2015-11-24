@@ -1,0 +1,275 @@
+/*------------------------------------*\
+    #PANEL
+\*------------------------------------*/
+
+/**
+ * The panel object simply boxes off content.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$inuit-panel-namespace:         $inuit-namespace !default;
+
+$inuit-panel-padding:           $inuit-base-spacing-unit !default;
+$inuit-panel-padding--tiny:     quarter($inuit-panel-padding) !default;
+$inuit-panel-padding--small:    halve($inuit-panel-padding) !default;
+$inuit-panel-padding--large:    double($inuit-panel-padding) !default;
+$inuit-panel-padding--huge:     quadruple($inuit-panel-padding) !default;
+
+$inuit-enable-panel--flush:         $inuit-enable-panel; // overwrite to set individually
+$inuit-enable-panel--tiny:          $inuit-enable-panel; // overwrite to set individually
+$inuit-enable-panel--small:         $inuit-enable-panel; // overwrite to set individually
+$inuit-enable-panel--large:         $inuit-enable-panel; // overwrite to set individually
+$inuit-enable-panel--huge:          $inuit-enable-panel; // overwrite to set individually
+$inuit-enable-panel--responsive:    $inuit-enable-panel; // overwrite to set individually
+$inuit-enable-panel--letterbox:     $inuit-enable-panel; // overwrite to set individually
+
+$inuit-enable-panel--wedge:         $inuit-enable-panel; // overwrite to set individually
+
+
+@if ($inuit-enable-panel == true) {
+    /**
+     * 1. apply .panel class to create block clearing block elements
+     */
+    .#{$inuit-panel-namespace}panel,
+    %#{$inuit-panel-namespace}panel {
+        @extend %clearfix;
+        display: block; /* [1] */
+        padding: $inuit-panel-padding;
+        position: relative;
+        > :last-child {
+            margin-bottom: 0;
+        }
+
+    }
+
+    @if ($inuit-enable-panel--flush == true) {
+
+        /**
+         * Flush (i.e. no padding) panel.
+         */
+
+        .#{$inuit-panel-namespace}panel--flush,
+        %#{$inuit-panel-namespace}panel--flush {
+            padding: 0;
+        }
+
+    }
+
+    @if ($inuit-enable-panel--tiny == true) {
+
+        /**
+         * Tiny panel.
+         */
+
+        .#{$inuit-panel-namespace}panel--tiny,
+        %#{$inuit-panel-namespace}panel--tiny {
+            padding: $inuit-panel-padding--tiny;
+        }
+
+    }
+
+    @if ($inuit-enable-panel--small == true) {
+
+        /**
+         * Small panel.
+         */
+
+        .#{$inuit-panel-namespace}panel--small,
+        %#{$inuit-panel-namespace}panel--small {
+            padding: $inuit-panel-padding--small;
+        }
+
+    }
+
+    @if ($inuit-enable-panel--large == true) {
+
+        /**
+         * Large panel.
+         */
+
+        .#{$inuit-panel-namespace}panel--large,
+        %#{$inuit-panel-namespace}panel--large {
+            padding: $inuit-panel-padding--large;
+        }
+
+    }
+
+    @if ($inuit-enable-panel--huge == true) {
+
+        /**
+         * Huge panel.
+         */
+
+        .#{$inuit-panel-namespace}panel--huge,
+        %#{$inuit-panel-namespace}panel--huge {
+            padding: $inuit-panel-padding--huge;
+        }
+
+    }
+
+    @if ($inuit-enable-panel--responsive == true) {
+       /**
+         * Change padding according to screen size
+         */
+        .#{$inuit-panel-namespace}panel--responsive,
+        %#{$inuit-panel-namespace}panel--responsive {
+            padding: $inuit-panel-padding--tiny;
+            @include media-query(mq-sm-up) {
+                padding: $inuit-panel-padding--small;
+            }
+            @include media-query(mq-md-up) {
+                padding: $inuit-panel-padding--large;
+            }
+            @include media-query(mq-lg-up) {
+                padding: $inuit-panel-padding--huge;
+            }
+        }
+    }
+
+    @if ($inuit-enable-panel--letterbox == true) {
+
+        /**
+         * No side padding panel.
+         */
+
+        .#{$inuit-panel-namespace}panel--letterbox,
+        %#{$inuit-panel-namespace}panel--letterbox {
+            padding: $inuit-panel-padding 0;
+        }
+
+    }
+
+    @if ($inuit-enable-panel--wedge == true) {
+
+        $color-wedge:   $color-primary !default;
+        $wedge-height:  40px !default;
+        $wedge-width:   1400px !default;
+
+        body {
+            overflow-x: hidden;
+        }
+        .#{$inuit-panel-namespace}panel--wedge,
+        %#{$inuit-panel-namespace}panel--wedge {
+            background-color: $color-wedge;
+        }
+        .#{$inuit-panel-namespace}panel--wedge::before,
+        %#{$inuit-panel-namespace}panel--wedge::before {
+            content: "";
+            position: absolute;
+            top: -$wedge-height;
+            left: 0;
+            height: 0;
+            width: 0;
+            border-top: $wedge-height solid transparent;
+            border-left: $wedge-width solid $color-wedge;
+        }
+        .#{$inuit-panel-namespace}panel--wedge::after,
+        %#{$inuit-panel-namespace}panel--wedge::after {
+            content: "";
+            position: absolute;
+            bottom: -$wedge-height;
+            left: 0;
+            height: 0;
+            width: 0;
+            border-bottom: $wedge-height solid transparent;
+            border-left: $wedge-width solid $color-wedge;
+        }
+
+        // panel with only top wedge 
+        .#{$inuit-panel-namespace}panel--wedge__top,
+        %#{$inuit-panel-namespace}panel--wedge__top {
+            background-color: $color-wedge;
+        }
+        .#{$inuit-panel-namespace}panel--wedge__top::before,
+        %#{$inuit-panel-namespace}panel--wedge__top::before {
+            content: "";
+            position: absolute;
+            top: -$wedge-height;
+            left: 0;
+            height: 0;
+            width: 0;
+            border-top: $wedge-height solid transparent;
+            border-left: $wedge-width solid $color-wedge;
+        }
+
+        // panel with only bottom wedge 
+        .#{$inuit-panel-namespace}panel--wedge__bottom,
+        %#{$inuit-panel-namespace}panel--wedge__bottom {
+            background-color: $color-wedge;
+        }
+        .#{$inuit-panel-namespace}panel--wedge__bottom::before,
+        %#{$inuit-panel-namespace}panel--wedge__bottom::before {
+            content: "";
+            position: absolute;
+            top: -$wedge-height;
+            left: 0;
+            height: 0;
+            width: 0;
+            border-top: $wedge-height solid transparent;
+            border-left: $wedge-width solid $color-wedge;
+        }
+
+        // reverse sloping wedge
+        .#{$inuit-panel-namespace}panel--wedge__rev,
+        %#{$inuit-panel-namespace}panel--wedge__rev {
+            background-color: $color-wedge;
+        }
+        .#{$inuit-panel-namespace}panel--wedge__rev::before,
+        %#{$inuit-panel-namespace}panel--wedge__rev::before {
+            content: "";
+            position: absolute;
+            top: -$wedge-height;
+            right: 0;
+            height: 0;
+            width: 0;
+            border-top: $wedge-height solid transparent;
+            border-right: $wedge-width solid $color-wedge;
+        }
+        .#{$inuit-panel-namespace}panel--wedge__rev::after,
+        %#{$inuit-panel-namespace}panel--wedge__rev::after {
+            content: "";
+            position: absolute;
+            bottom: -$wedge-height;
+            right: 0;
+            height: 0;
+            width: 0;
+            border-bottom: $wedge-height solid transparent;
+            border-right: $wedge-width solid $color-wedge;
+        }
+
+        // reverse panel with only top wedge
+        .#{$inuit-panel-namespace}panel--wedge__rev-top,
+        %#{$inuit-panel-namespace}panel--wedge__rev-top {
+            background-color: $color-wedge;
+        }
+        .#{$inuit-panel-namespace}panel--wedge__rev-top::before,
+        %#{$inuit-panel-namespace}panel--wedge__rev-top::before {
+            content: "";
+            position: absolute;
+            top: -$wedge-height;
+            right: 0;
+            height: 0;
+            width: 0;
+            border-top: $wedge-height solid transparent;
+            border-right: $wedge-width solid $color-wedge;
+        }
+
+        // reverse panel with only bottom wedge
+        .#{$inuit-panel-namespace}panel--wedge__rev-bottom,
+        %#{$inuit-panel-namespace}panel--wedge__rev-bottom {
+            background-color: $color-wedge;
+        }
+        .#{$inuit-panel-namespace}panel--wedge__rev-bottom::after,
+        %#{$inuit-panel-namespace}panel--wedge__rev-bottom::after {
+            content: "";
+            position: absolute;
+            bottom: -$wedge-height;
+            right: 0;
+            height: 0;
+            width: 0;
+            border-bottom: $wedge-height solid transparent;
+            border-right: $wedge-width solid $color-wedge;
+        }
+
+    }
+}

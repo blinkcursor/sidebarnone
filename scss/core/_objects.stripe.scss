@@ -1,0 +1,32 @@
+/*------------------------------------*\
+    #STRIPE
+\*------------------------------------*/
+
+// a full-width section
+
+$stripe-background-color:	$color-stripe-mid!default;
+
+.stripe {
+	width: 100%;
+	margin: 0;
+	margin-bottom: $inuit-base-spacing-unit;
+	padding: $inuit-base-spacing-unit;
+}
+
+.stripe--large {
+	padding: double($inuit-base-spacing-unit);
+}
+
+.stripe--small {
+	padding: halve($inuit-base-spacing-unit);
+}
+
+.stripe--light {
+	background-color: $color-stripe-light;
+	color: inherit;
+}
+
+.stripe--dark {
+	background-color: $color-stripe-dark;
+	color: $color-stripe-light;
+}

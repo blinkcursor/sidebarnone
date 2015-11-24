@@ -1,0 +1,51 @@
+/*------------------------------------*\
+    # NOTIFICATIONS
+\*------------------------------------*/
+
+$inuit-notification-padding:			halve($inuit-base-spacing-unit) !default;
+$inuit-notification-border-width:		3px !default;
+$inuit-notification-border-color:		$color-base !default;
+$inuit-notification-background-color:	$color-silver !default;
+
+.notification {
+	display: block;
+	width: 100%;
+	padding: $inuit-notification-padding;
+	margin-bottom: $inuit-base-spacing-unit;
+	border-left: $inuit-notification-border-width solid $inuit-notification-border-color;
+	color: darken($inuit-notification-border-color, 30);
+	background-color: $inuit-notification-background-color;
+	&.error {
+		border-color: $color-error;
+		color: darken($color-error, 15%);
+		background-color: lighten($color-error, 35%);
+	}
+	&.success {
+		border-color: $color-success;
+		color: darken($color-success, 15%);
+		background-color: lighten($color-success, 35%);
+	}
+	&.warning {
+		border-color: $color-warning;
+		color: darken($color-warning, 15%);
+		background-color: lighten($color-warning, 35%);
+	}
+	&.info {
+		border-color: $color-info;
+		color: darken($color-info, 15%);
+		background-color: lighten($color-info, 35%);
+	}
+	&.inverse {
+		border-color: lighten($color-inverse, 35%);
+		color: $color-whitish;
+		background-color: $color-inverse;
+	}
+	&.empty {
+		text-align: center;
+		background-color: $color-whitish;
+		border: 1px dashed $color-silver;
+	}
+	p:last-child {
+		margin-bottom: 0;
+	}
+}

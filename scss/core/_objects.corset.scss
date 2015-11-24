@@ -1,0 +1,18 @@
+/*------------------------------------*\
+    #CORSET
+\*------------------------------------*/
+
+.corset {
+	max-width: 100%; // default for smallest screens
+	margin-left: auto;
+	margin-right: auto;
+//	@include media-query(mq-sm-up) { // 360+
+//		max-width: 96%;
+//	}
+	@include media-query(mq-md-up) { // 768+
+		max-width: 960px;
+	}
+//	@include media-query(mq-lg-up) { // 1024+
+//		max-width: 960px;
+//	}
+}

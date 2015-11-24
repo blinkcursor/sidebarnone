@@ -1,0 +1,93 @@
+/* ==========================================================================
+   SET VERTICAL (EXPAND) & HORIZONTAL (CONTAIN) PADDING ON SECTIONS
+
+   Vertical content shrinks-to-fit so we *EXPAND* it
+   Horizontal content takes up the available width so we *CONTAIN* it
+   ========================================================================== */
+
+$inuit-section-padding:           $inuit-base-spacing-unit !default;
+$inuit-section-padding--tiny:     quarter($inuit-section-padding) !default;
+$inuit-section-padding--small:    halve($inuit-section-padding) !default;
+$inuit-section-padding--large:    double($inuit-section-padding) !default;
+$inuit-section-padding--huge:     quadruple($inuit-section-padding) !default;
+
+@if ($inuit-enable-section == true) {
+
+    /**
+     * Responsive (steps down with mq's)
+     */
+     .contain--responsive,
+     %contain--responsive {
+        @include media-query(lg-up) {
+            padding-left: $inuit-section-padding--huge;
+            padding-right: $inuit-section-padding--huge;
+        }
+        @include media-query(md-up) {
+            padding-left: $inuit-section-padding--large;
+            padding-right: $inuit-section-padding--large;
+        }
+        @include media-query(sm-up) {
+            padding-left: $inuit-section-padding;
+            padding-right: $inuit-section-padding;
+        }
+        @include media-query(xs-up) {
+            padding-left: $inuit-section-padding--small;
+            padding-right: $inuit-section-padding--small;
+        }
+        @include media-query(mq-xs) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+     }
+
+
+    /**
+     * Responsive with smaller padding
+     */
+     .contain--responsive-,
+     %contain--responsive- {
+        @include media-query(lg-up) {
+            padding-left: $inuit-section-padding--large;
+            padding-right: $inuit-section-padding--large;
+        }
+        @include media-query(md-up) {
+            padding-left: $inuit-section-padding;
+            padding-right: $inuit-section-padding;
+        }
+        @include media-query(sm-up) {
+            padding-left: $inuit-section-padding--small;
+            padding-right: $inuit-section-padding--small;
+        }
+        @include media-query(xs-up) {
+            padding-left: $inuit-section-padding--tiny;
+            padding-right: $inuit-section-padding--tiny;
+        }
+        @include media-query(xs) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+     }
+
+
+    // TODO: LOOP OVER BREAKPOINTS AND MAKE A SYSTEM OF
+    // e.g. .contain--large@md etc.
+
+    // // Loop over our breakpoints defined in _settings.responsive.scss
+    // @each $breakpoint in $breakpoints {
+
+    //   // Get the name of the breakpoint.
+    //   $alias: nth($breakpoint, 1);
+
+    //   @include media-query($alias) {
+
+    //     .contain\@#{$alias} {
+
+    //     }
+
+
+    //   }
+
+    // }
+
+
+}

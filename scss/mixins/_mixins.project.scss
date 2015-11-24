@@ -1,0 +1,28 @@
+/* ==========================================================================
+   TOOLS & MIXINS DEFINED FOR THIS PROJECT
+   ========================================================================== */
+
+@mixin center-vertical {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	&:before {
+		transform-style: preserve-3d;
+	}
+}
+
+@mixin center-vertical-responsive-image {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	right: 0;
+}
+
+@mixin responsive-bkgd-img ($height: 16, $width: 9) {
+	position: relative;
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+	padding-top: ($width / $height) * 100%;
+}

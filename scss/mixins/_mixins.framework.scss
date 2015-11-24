@@ -1,0 +1,185 @@
+/* ==========================================================================
+   MATHS HELPERS
+   ========================================================================== */
+// Halve and double numbers, returning rounded integers. E.g.:
+//
+// .foo {
+//     padding: halve(3.2px);
+// }
+//
+@function quarter($inuit-number) {
+    @return round($inuit-number / 4);
+}
+
+@function halve($inuit-number) {
+    @return round($inuit-number / 2);
+}
+
+@function double($inuit-number) {
+    @return round($inuit-number * 2);
+}
+
+@function quadruple($inuit-number) {
+    @return round($inuit-number * 4);
+}
+
+/* ==========================================================================
+   FONT-SIZE MIXIN
+   ========================================================================== */
+// Create a fully formed type style (sizing and vertical rhythm) by passing in a
+// single value, e.g.:
+//
+// .foo {
+//     @include inuit-font-size(12px);
+// }
+//
+// This will generate a rem-based font-size with its pixel fallback, as well as
+// a unitless line-height which will place the element on your baseline, e.g.:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+//     line-height: 2;
+// }
+//
+// If you do not want inuitcss to generate you a line-height automatically, you
+// simply pass in your own as a second paramater:
+//
+// .foo {
+//     @include inuit-font-size(12px, 1.5);
+// }
+//
+// This will yield:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+//     line-height: 1.5;
+// }
+//
+// This parameter can be any integer, ‘inherit’, or ‘normal’. If you don’t want
+// a line-height at all, pass in a second paramater of ‘none’ or ‘false’:
+//
+// .foo {
+//     @include inuit-font-size(12px, none);
+// }
+//
+// This will yield:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+// }
+
+@mixin inuit-font-size($inuit-font-size, $inuit-line-height: auto) {
+    font-size: $inuit-font-size;
+    font-size: ($inuit-font-size / $inuit-base-font-size) * 1rem;
+    @if $inuit-line-height == auto {
+        line-height: ceil($inuit-font-size / $inuit-base-line-height) * ($inuit-base-line-height / $inuit-font-size);
+    }
+    @else {
+        @if (type-of($inuit-line-height) == number or $inuit-line-height == inherit or $inuit-line-height == normal) {
+            line-height: $inuit-line-height;
+        }
+        @elseif ($inuit-line-height != none and $inuit-line-height != false) {
+            @warn "D’oh! ‘#{$inuit-line-height}’ is not a valid value for `line-height`."
+        }
+    }
+}
+
+/* ==========================================================================
+   MEDIA-QUERY MIXING
+   ========================================================================== */
+// Here we set a variable assuming that responsive settings are not set
+// globally. If they have been previously been defined, the following variable
+// will be overriden and will be set to `true`.
+
+$inuit-responsive-settings: false !default;
+@if ($inuit-responsive-settings == false) {
+    @warn "Oops! Have you included a responsive settings file?"
+}
+
+// A simple mixin to quickly generate whole media queries from the aliases and
+// conditions defined in `_settings.responsive.scss`.
+//
+// Usage:
+//
+// .foo {
+//     color: green;
+//     @include media-query(palm) {
+//         color: red;
+//     }
+// }
+
+@mixin media-query($mq) {
+    $breakpoint-found: false;
+    // Loop through the list of breakpoints we’ve provided in our settings file.
+    @each $breakpoint in $breakpoints {
+        // Grab the alias and the condition from their respective locations in
+        // the list.
+        $alias:     nth($breakpoint, 1);
+        $condition: nth($breakpoint, 2);
+
+        // If the media query we’ve specified has an alias and a condition...
+        @if $mq == $alias and $condition {
+            // ...tell the mixin that we’ve found it...
+            $breakpoint-found: true;
+            // ...and spit it out here.
+            @media #{$condition} {
+                @content;
+            }
+        }
+    }
+    // If the user specifies a non-exitent alias, send them a warning.
+    @if $breakpoint-found == false{
+        @warn "Oops! Breakpoint ‘#{$mq}’ does not exist."
+    }
+}
+
+
+/* ==========================================================================
+   MIXIN TO GENERATE GRID SYSTEM WIDTH CLASSES
+   ========================================================================== */
+// A mixin to spit out our width classes. Pass in the columns we want the widths
+// to have, and an optional suffix for responsive widths. E.g. to create thirds
+// and quarters for a small breakpoint:
+//
+// @include inuit-widths(3 4, -sm);
+
+// Predefine the variables below in order to alter and enable specific features.
+$inuit-widths-namespace: $inuit-namespace !default;
+
+// Do we want to use classes like `<div class="u-1/4">` instead of
+// `<div class="u-1-of-4">`?
+$inuit-use-fractions: true !default;
+
+// Depending on what we chose for `$inuit-use-fractions`, create the relevant
+// delimiter.
+@if ($inuit-use-fractions == true) {
+    $inuit-widths-delimiter: \/ !global;
+} @else {
+    $inuit-widths-delimiter: -of- !global;
+}
+
+@mixin inuit-widths($inuit-widths-columns, $inuit-widths-breakpoint: null) {
+
+    // Loop through the number of columns for each denominator of our fractions.
+    @each $inuit-widths-denominator in $inuit-widths-columns {
+        // If we’re trying to make wholes, just spit a 100% width utility out
+        // one time only.
+        @if ($inuit-widths-denominator == 1) {
+            .#{$inuit-widths-namespace}u-1#{$inuit-widths-delimiter}1#{$inuit-widths-breakpoint} {
+                width: 100% !important;
+            }
+        } @else {
+            // Begin creating a numberator for our fraction up until we hit the
+            // denominator.
+            @for $inuit-widths-numerator from 1 to $inuit-widths-denominator {
+                // Build a class in the format `.u-3/4` or `.u-3-of-4`.
+                .#{$inuit-widths-namespace}u-#{$inuit-widths-numerator}#{$inuit-widths-delimiter}#{$inuit-widths-denominator}#{$inuit-widths-breakpoint} {
+                    width: ($inuit-widths-numerator / $inuit-widths-denominator) * 100% !important;
+                }
+            }
+        }
+    }
+}

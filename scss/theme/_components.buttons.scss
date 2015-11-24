@@ -1,0 +1,152 @@
+/*------------------------------------*\
+    #BUTTONS
+\*------------------------------------*/
+
+.btn {
+    transition: 0.2s;
+    border-bottom-width: double($inuit-btn-border-width);
+    border-bottom-color: darken($inuit-btn-border-color, 15%);
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: darken($inuit-btn-background, 15%);
+        border-color: darken($inuit-btn-border-color, 15%);
+        border-bottom-color: darken($inuit-btn-border-color, 30%);
+        color: lighten($inuit-btn-color, 15%);
+    }
+}
+
+.btn--inverse {
+    background-color: $color-inverse;
+    border-color: $color-inverse;
+    border-bottom-color: lighten($color-inverse, 15%);
+    color:  $color-whitish;
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: lighten($color-inverse, 15%);
+        border-color: lighten($color-inverse, 15%);
+        border-bottom-color: lighten($color-inverse, 30%);
+    }
+}
+
+
+.btn--error {
+    background-color: $color-error;
+    border-color: $color-error;
+    border-bottom-color: darken($color-error, 15%);
+    color:  $color-white;
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: darken($color-error, 15%);
+        border-color: darken($color-error, 15%);
+        border-bottom-color: darken($color-error, 30%);
+    }
+}
+
+.btn--success {
+    background-color: $color-success;
+    border-color: $color-success;
+    border-bottom-color: darken($color-success, 15%);
+    color:  $color-white;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: darken($color-success, 15%);
+        border-color: darken($color-success, 15%);
+        border-bottom-color: darken($color-success, 30%);
+    }
+}
+
+.btn--warning {
+    background-color: $color-warning;
+    border-color: $color-warning;
+    border-bottom-color: darken($color-warning, 15%);
+    color:  $color-white;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: darken($color-warning, 15%);
+        border-color: darken($color-warning, 15%);
+        border-bottom-color: darken($color-warning, 30%);
+    }
+}
+
+.btn--info {
+    background-color: $color-info;
+    border-color: $color-info;
+    border-bottom-color: darken($color-info, 15%);
+    color:  $color-white;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: darken($color-info, 15%);
+        border-color: darken($color-info, 15%);
+        border-bottom-color: darken($color-info, 30%);
+    }
+}
+
+.btn--outline {
+    background-color: transparent;
+    color:  darken($inuit-btn-background, 20%);
+    &:hover {
+        background-color: $inuit-btn-background;
+        border-color: $inuit-btn-background;
+        border-bottom-color: darken($inuit-btn-background, 15%);
+        color: $inuit-btn-color;
+    }
+}
+.btn--inverse.btn--outline {
+    color: $color-inverse;
+    &:hover {
+        background-color: $color-inverse;
+        border-color:   $color-inverse;
+        border-bottom-color: lighten($color-inverse, 15%);
+        color: $color-white;
+    }
+}
+.btn--error.btn--outline {
+    color: $color-error;
+    border-bottom-color: darken($color-error, 7.5%);
+    &:hover {
+        background-color: $color-error;
+        border-color: $color-error;
+        border-bottom-color: darken($color-error, 15%);
+        color: $color-white;
+    }
+}
+.btn--success.btn--outline {
+    color: $color-success;
+    border-bottom-color: darken($color-success, 7.5%);
+    &:hover {
+        background-color: $color-success;
+        border-color: $color-success;
+        border-bottom-color: darken($color-success, 15%);
+        color: $color-white;
+    }
+}
+.btn--warning.btn--outline {
+    color: $color-warning;
+    border-bottom-color: darken($color-warning, 7.5%);
+    &:hover {
+        background-color: $color-warning;
+        border-color: $color-warning;
+        border-bottom-color: darken($color-warning, 15%);
+        color: $color-white;
+    }
+}
+.btn--info.btn--outline {
+    color: $color-info;
+    border-bottom-color: darken($color-info, 7.5%);
+    &:hover {
+        background-color: $color-info;
+        border-color: $color-info;
+        border-bottom-color: darken($color-info, 15%);
+        color: $color-white;
+    }
+}

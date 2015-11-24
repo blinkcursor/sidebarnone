@@ -1,0 +1,225 @@
+/* ==========================================================================
+   BASE & THEME SETTINGS HERE
+   ========================================================================== */
+
+    $dev-mode:      false;           // set to true to 'kitchen sink' everything
+    $false:         $dev-mode;
+
+/* Theme colors
+   ========================================================================== */
+    // theme color palette defined here:
+    @import "theme/settings.colors";
+
+    $color-primary:     rgba(20,159,26,1); // green
+    $color-secondary:   rgba(255,146,51,1); // orange
+    $color-hi-yellow:   rgba(243,243,21,0.7);
+    $color-hi-blue:     rgba(13,213,252,0.7);
+    $color-hi-pink:     rgba(255,0,13,0.7);
+    $color-hi-green:    rgba(131,245,44,0.7);
+    $color-links:       $color-yellow;
+
+    $inuit-base-text-color:         $color-darkgrey;
+    $inuit-base-background-color:   $color-white;
+
+/* Typography
+   ========================================================================== */
+
+    @font-face {
+        font-family: 'vincHand';
+        src: url('../fonts/vinchand-webfont.eot');
+        src: url('../fonts/vinchand-webfont.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/vinchand-webfont.woff2') format('woff2'),
+             url('../fonts/vinchand-webfont.woff') format('woff'),
+             url('../fonts/vinchand-webfont.ttf') format('truetype'),
+             url('../fonts/vinchand-webfont.svg#vinchandregular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    $inuit-base-font-size:          16px;
+    $inuit-base-line-height:        24px;
+
+    // scale
+    $size-tera:             96px;
+    $size-giga:             80px;
+    $size-mega:             64px;
+    $size-kilo:             48px;
+    //
+    $size-alpha:            36px; // h1
+    $size-beta:             30px; // h2
+    $size-gamma:            24px; // h3
+    $size-delta:            20px; // h4
+    $size-epsilon:          16px; // h5, p
+    $size-zeta:             14px; // h6
+    //
+    $size-milli:            12px;
+    $size-micro:            10px;
+
+    $inuit-lede-size:       1.125;
+
+    // TODO: checkout below for mixin for viewport sized typography
+    // https://eduardoboucas.com/blog/2015/06/18/viewport-sized-typography-with-minimum-and-maximum-sizes.html
+
+/* UI tweaks
+   ========================================================================== */
+
+    // table & delimited-list borders
+    $border-widths:          1px;
+    $border-color:           $color-darkgrey;
+
+    // buttons
+    $inuit-btn-background:      $color-secondary;
+    $inuit-btn-color:           #fff;
+    $inuit-btn-border-width:    1px;
+    $inuit-btn-border-style:    solid;
+    $inuit-btn-border-color:    $color-secondary;
+    $inuit-btn-radius:          2px;
+
+    // corset max-width
+    $corset-maxwidth:           960px;
+
+
+
+/* ==========================================================================
+   INCLUDE FILES TO BUILD STYLE.CSS
+   ========================================================================== */
+    @import "core/settings.defaults";
+    @import "core/settings.responsive"; // OVERWRITE TO CHANGE BREAKPOINTS
+
+    @import "mixins/mixins.framework";
+    @import "mixins/mixins.project";
+
+    @import "core/generic.normalize";
+    @import "core/generic.reset";
+    @import "core/generic.box-sizing";
+    @import "core/generic.margins";
+
+    @import "core/base.page";               // high level styles applied to <html>
+    @import "core/base.typography";
+    @import "core/base.images";
+
+/* Object abstractions
+   ========================================================================== */
+
+    // .block to stack image above some text content
+    $inuit-enable-block:         $false; 
+    @import "core/objects.block";         // EDIT for variations
+
+
+/*
+    // .panel to box off content into sections
+    // TODO -- rework. Add new type of wedge that looks like inverted ^
+    $inuit-enable-panel:         true;
+    @import "core/objects.panel";         // EDIT for variations
+*/
+
+
+    // add vertical (.expand) & horiz (.contain) padding to sections
+    $inuit-enable-section:      true;
+    @import "core/objects.section";
+    @import "core/objects.section-responsive";
+
+    // .media to align images to side of text content
+    $inuit-enable-media:         $false;
+    $inuit-media-collapse-at:    720px;
+    @import "core/objects.media";         // EDIT for variations
+
+    // .flag to align images to side of text content with vertical alignment
+    $inuit-enable-flag:          $false;
+    $inuit-flag-collapse-at:     720px;
+    @import "core/objects.flag";          // EDIT for variations
+
+    // .nav abstraction
+    $inuit-enable-nav:           true;
+    @import "core/objects.nav";           // EDIT for variations
+
+    //  equal-width tab abstraction
+    $inuit-enable-tabs:          $false;
+    @import "core/objects.tabs";          // EDIT for variations
+
+    //  grid system
+    $inuit-enable-layout:        true;
+    @import "core/objects.layout";        // EDIT for variations
+    $inuit-use-fractions:    $false;
+    @import "core/trumps.widths";          // width helper classes
+    @import "core/trumps.widths-responsive";
+
+    // ** LISTS ** //
+    @import "core/base.lists";
+    @import "core/objects.list-bare";
+
+    $inuit-enable-list-inline--delimited:   $false;
+    $inuit-list-inline-delimit-character:   ",\00A0";
+    @import "core/objects.list-inline";
+
+    $inuit-enable-list-block:     $false;
+    @import "core/objects.list-block";
+
+    $inuit-enable-list-ui:    $false;
+    $inuit-list-ui-border-width:    $border-widths;
+    $inuit-list-ui-border-style:    solid;
+    $inuit-list-ui-border-color:    $border-color;
+    @import "core/objects.list-ui";
+
+    // pack objects horizontally to fill fluid parent width
+    $inuit-enable-pack:       $false;
+    @import "core/objects.pack";
+
+    // table helper classes
+    $inuit-table-border-width:      $border-widths;
+    $inuit-table-border-style:      solid;
+    $inuit-table-border-color:      $border-color;
+    $inuit-enable-tables:   $false;
+    @import "core/objects.tables";
+
+    // basic button styles
+    $inuit-enable-btn:              true;
+    @import "core/objects.buttons";
+    @import "theme/components.buttons"; // additional button styling to extend .btn base
+
+/*
+    // max-width corset
+    // TODO - rewrite this
+    @import "core/objects.corset";
+    // NOW ADDED VIA SECTION and .contain--corset
+*/
+
+    // full-width stripes
+    // TODO rewrite a striped component to alter background colors to replace this
+    // @import "core/objects.stripe";
+
+    // notifications
+    // @import "theme/components.notifications";
+
+    // a dropdown menu with mobile version
+    // TODO - review this
+    // $menu-break:    "mq-sm"; // which media query to collapse the menu
+    // @import "theme/components.menu";
+
+
+/* TRUMPS -- helper classes
+   ========================================================================== */
+
+    @import "core/trumps.clearfix";
+    @import "core/trumps.print";
+    // alignment helper classes
+    // TODO -- review this
+    @import "core/trumps.align";
+
+    @import "core/trumps.misc";
+
+    // Margin and padding helper classes. Use these to tweak layout on a micro level
+    $inuit-enable-margins:              true;
+    $inuit-enable-paddings:             true;
+    @import "core/trumps.spacing";
+    $inuit-enable-responsive-margins:   $false;
+    $inuit-enable-responsive-paddings:  $false;
+    @import "core/trumps.spacing-responsive";
+
+    // Hide elements at different screen sizes
+    @import "core/trumps.hide-responsive";
+
+/* ==========================================================================
+   USER -- working file of user-generated styling
+   ========================================================================== */
+    @import "working/working.user";
