@@ -81,6 +81,10 @@
       // prevent form submission if not valid
       this.contactForm.addEventListener('submit', function(event) {
         if ( !this.checkValidity() ) { event.preventDefault(); }
+
+        // TESTING
+        console.log("form...", this);
+
       });
     },
 
