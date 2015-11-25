@@ -150,10 +150,12 @@ body {
   margin-bottom: 1rem;
 }
 .nav-head li, .nav-foot li {
-  padding: 2px 10px;  
+  padding: 2px 10px;
+  @include media-query(sm) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
-
-
 
 .site-footer__about {
   @include inuit-font-size($size-gamma);
