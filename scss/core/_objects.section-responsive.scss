@@ -18,25 +18,23 @@ $inuit-section-padding--huge:     quadruple($inuit-section-padding) !default;
      */
      .contain--responsive,
      %contain--responsive {
-        @include media-query(lg-up) {
-            padding-left: $inuit-section-padding--huge;
-            padding-right: $inuit-section-padding--huge;
-        }
-        @include media-query(md-up) {
-            padding-left: $inuit-section-padding--large;
-            padding-right: $inuit-section-padding--large;
+        padding-left: 0;
+        padding-right: 0;
+        @include media-query(xs-up) {
+            padding-left: $inuit-section-padding--small;
+            padding-right: $inuit-section-padding--small;
         }
         @include media-query(sm-up) {
             padding-left: $inuit-section-padding;
             padding-right: $inuit-section-padding;
         }
-        @include media-query(xs-up) {
-            padding-left: $inuit-section-padding--small;
-            padding-right: $inuit-section-padding--small;
+        @include media-query(md-up) {
+            padding-left: $inuit-section-padding--large;
+            padding-right: $inuit-section-padding--large;
         }
-        @include media-query(mq-xs) {
-            padding-left: 0;
-            padding-right: 0;
+        @include media-query(lg-up) {
+            padding-left: $inuit-section-padding--huge;
+            padding-right: $inuit-section-padding--huge;
         }
      }
 
@@ -46,25 +44,23 @@ $inuit-section-padding--huge:     quadruple($inuit-section-padding) !default;
      */
      .contain--responsive-,
      %contain--responsive- {
-        @include media-query(lg-up) {
-            padding-left: $inuit-section-padding--large;
-            padding-right: $inuit-section-padding--large;
-        }
-        @include media-query(md-up) {
-            padding-left: $inuit-section-padding;
-            padding-right: $inuit-section-padding;
+        padding-left: 0;
+        padding-right: 0;
+        @include media-query(xs-up) {
+            padding-left: $inuit-section-padding--tiny;
+            padding-right: $inuit-section-padding--tiny;
         }
         @include media-query(sm-up) {
             padding-left: $inuit-section-padding--small;
             padding-right: $inuit-section-padding--small;
         }
-        @include media-query(xs-up) {
-            padding-left: $inuit-section-padding--tiny;
-            padding-right: $inuit-section-padding--tiny;
+        @include media-query(md-up) {
+            padding-left: $inuit-section-padding;
+            padding-right: $inuit-section-padding;
         }
-        @include media-query(xs) {
-            padding-left: 0;
-            padding-right: 0;
+        @include media-query(lg-up) {
+            padding-left: $inuit-section-padding--large;
+            padding-right: $inuit-section-padding--large;
         }
      }
 
