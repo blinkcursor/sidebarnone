@@ -8,15 +8,13 @@
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <!-- Place favicon.ico in the root directory -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="" id="home">
   <div class="sheaf-of-papers contain--corset">
     <div class="sheet-of-paper">
       <section class="register-form" style="margin-top: 4rem;">
-        <form id="register" action="https://track-eu.customer.io/api/v1/forms/1/submit" method="post">
+        <form id="register">
           <input type="hidden" name="_next" value="//sidebarnone.com/" />
           <input type="hidden" name="_subject" value="Website enquiry" />
           <input type="text" name="_gotcha" style="display:none" />
@@ -62,6 +60,76 @@
       </section>
     </div>
   </div>
-</body>
 
+<script type="text/javascript">
+  const form = document.querySelector("#register");
+
+  form.addEventListener( 'submit', (event) => {
+
+    event.preventDefault();
+
+    /* Customer data */
+    const id = Math.floor(Math.random() * 9999 );
+    const trackEndpoint = `https://track-eu.customer.io/api/v1/customers/${id}`;
+
+    const email = form.querySelector('#email').value;    
+    const formData = {
+      email: email,
+      first_name: form.querySelector('#first_name').value,
+      last_name: form.querySelector('#last_name').value,
+      dob: form.querySelector('#dob').value,
+      school: form.querySelector('#school').value,
+      created_at: Math.floor( Date.now() / 1000 )
+    };
+
+    /* Event data */
+    const eventEndpoint = `https://track-eu.customer.io/api/v1/customers/${email}/events`;
+    const startDate = (new Date("2021-12-25").getTime())/1000
+
+    const eventData = {
+      name: "course_subscribe",
+      data: {
+        course_name: "animation",
+        course_start_date: `${startDate}`
+      }
+    };
+
+
+    /* Customer request */
+    fetch( trackEndpoint, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Basic YThhZDkxMTIwN2VkMmViMWU4MTM6MDhlODM5YWFhNWY1NGJhYzA5NzI='
+      },
+      body: JSON.stringify(formData),
+    })
+    .then( response => response.json() )
+    .then( result => {
+      /* Success, send Event requet */
+      fetch( eventEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Basic YThhZDkxMTIwN2VkMmViMWU4MTM6MDhlODM5YWFhNWY1NGJhYzA5NzI='
+        },
+        body: JSON.stringify(eventData),
+      })
+      .then( response => response.json() )
+      .then( result => {
+        console.log('Event success', result);
+      } )
+      .catch( (error) => {
+        console.log( 'Event error', error );
+      });
+    } )
+    .catch( (error) => {
+      console.error('Error:', error);
+    } );
+  });
+
+</script>
+</body>
 </html>
